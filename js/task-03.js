@@ -21,21 +21,13 @@ const images = [
 // Все элементы галереи должны добавляться в DOM за одну операцию вставки.
 // Добавь минимальное оформление галереи флексбоксами или гридами через CSS классы.
 
-const containerRef = document.querySelector(".gallery");
+const galleryUl = document.querySelector('.gallery');
+console.log(galleryUl);
+const allImgEl = images
+.map(image => `<li class ="gallery_image"><img src="${image.url}" alt="${image.alt}" height = "150"></li>`)
+.join('');
+galleryUl.insertAdjacentHTML('afterbegin', allImgEl);
 
-const galleryArr = images.map(image => {
-  const listEl = document.createElement("li");
-  const imgEl = document.createElement("img");
-  imgEl.src = image.url;
-  imgEl.alt = image.alt;
-  imgEl.width = 300;
-  imgEl.height = 250;
-  listEl.appendChild(imgEl);
-  return listEl;
-
-});
-
-containerRef.append(...galleryArr);
-
-containerRef.style.display = "flex";
-containerRef.style.listStyleType = "none";
+const gallaryStyle = document.querySelector(".gallery") 
+  gallaryStyle.style.display = "flex";
+  gallaryStyle.style.listStyle = "none";
